@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
 const SharedLayout = () => {
   return (
     <>
       <header>
         <nav>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" end>
+            Home
+          </NavLink>
           <NavLink to="/movies">Movies</NavLink>
         </nav>
       </header>
@@ -15,7 +16,5 @@ const SharedLayout = () => {
     </>
   );
 };
-
-// SharedLayout.propTypes = {};
 
 export default SharedLayout;

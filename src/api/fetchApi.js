@@ -23,6 +23,17 @@ export const getMoviesById = async movieId => {
   }
 };
 
+export const getMovieByQuery = async query => {
+  try {
+    const response = await axios.get(
+      `/search/movie?api_key=${API_KEY}&query=${query}`
+    );
+    return response.data.results;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export const getMovieCast = async movieId => {
   try {
     const response = await axios.get(
@@ -34,14 +45,13 @@ export const getMovieCast = async movieId => {
   }
 };
 
-export const getMovieByQuery = async query => {
+export const getReviewsOnMovie = async movieId => {
   try {
     const response = await axios.get(
-      `/search/movie?api_key=${API_KEY}&query=${query}`
+      `/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US`
     );
     return response.data.results;
   } catch (error) {
     console.log(error.message);
   }
 };
-// export default getTrendingMovies;

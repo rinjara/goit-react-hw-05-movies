@@ -1,7 +1,6 @@
 import { getMovieByQuery } from 'api/fetchApi';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
 const Movies = () => {
   const [moviesByQuery, setMoviesByQuery] = useState(null);
@@ -15,7 +14,6 @@ const Movies = () => {
       return;
     }
     getMovieByQuery(query).then(res => setMoviesByQuery(res));
-    // return () => {};
   }, [query]);
 
   const handleInput = value => {
@@ -41,7 +39,5 @@ const Movies = () => {
     </>
   );
 };
-
-// Movies.propTypes = {};
 
 export default Movies;

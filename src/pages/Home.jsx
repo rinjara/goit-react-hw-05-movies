@@ -1,7 +1,6 @@
 import { getTrendingMovies } from 'api/fetchApi';
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -23,7 +22,5 @@ const Home = () => {
     </ul>
   );
 };
-
-// Home.propTypes = {};
 
 export default Home;

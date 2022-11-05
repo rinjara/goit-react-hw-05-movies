@@ -1,8 +1,7 @@
 import { getMoviesById } from 'api/fetchApi';
 import MovieCard from 'components/MovieCard/MovieCard';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -10,7 +9,7 @@ const MovieDetails = () => {
   const location = useLocation();
 
   useEffect(() => {
-    getMoviesById(movieId).then(response => setMovieDetails(response));
+    getMoviesById(Number(movieId)).then(response => setMovieDetails(response));
   }, [movieId]);
 
   return (
@@ -23,11 +22,15 @@ const MovieDetails = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <NavLink to="cast">Cast</NavLink>
+            <NavLink to="cast" state={{ from: location.state?.from ?? '/' }}>
+              Cast
+            </NavLink>
           </li>
 
           <li>
-            <NavLink to="reviews">Reviews</NavLink>
+            <NavLink to="reviews" state={{ from: location.state?.from ?? '/' }}>
+              Reviews
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -36,7 +39,5 @@ const MovieDetails = () => {
     </>
   );
 };
-
-// MovieDetails.propTypes = {};
 
 export default MovieDetails;
