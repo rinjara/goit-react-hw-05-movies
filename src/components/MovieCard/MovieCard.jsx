@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Wrapper } from './MovieCard.styled';
 
 const MovieCard = ({
   movieInfo: {
@@ -14,8 +15,8 @@ const MovieCard = ({
   const imageUrl = `https://image.tmdb.org/t/p/w300/${poster_path}`;
 
   return (
-    <div>
-      <img src={imageUrl} alt={original_title} />
+    <Wrapper>
+      <img src={imageUrl} alt={original_title} loading="lazy" />
       <div>
         <h2>
           {original_title} ({new Date(release_date).getFullYear()})
@@ -26,7 +27,7 @@ const MovieCard = ({
         <h3>Genres</h3>
         <p>{genres.map(genre => genre.name).join('  ')}</p>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 

@@ -1,18 +1,22 @@
-import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+import { StyledLink, StyledSearchbar } from './SharedLayout.styled';
 
 const SharedLayout = () => {
   return (
     <>
-      <header>
+      <StyledSearchbar>
         <nav>
-          <NavLink to="/" end>
+          <StyledLink to="/" end>
             Home
-          </NavLink>
-          <NavLink to="/movies">Movies</NavLink>
+          </StyledLink>
+          <StyledLink to="/movies">Movies</StyledLink>
         </nav>
-      </header>
-      <Outlet />
+      </StyledSearchbar>
+
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
